@@ -12,7 +12,6 @@
 		091C7CDC1A50839D002E5351 /* Sign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091C7CDB1A50839D002E5351 /* Sign.swift */; };
 		093EFE3C24DB1D8900D7ED92 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C75E941AE3571900F1E749 /* Sodium.framework */; };
 		093EFE3D24DB1D8900D7ED92 /* Sodium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90C75E941AE3571900F1E749 /* Sodium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		093EFE3F24DB1E1400D7ED92 /* Clibsodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093EFE3E24DB1E1400D7ED92 /* Clibsodium.xcframework */; };
 		093EFE4024DB1E1400D7ED92 /* Clibsodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093EFE3E24DB1E1400D7ED92 /* Clibsodium.xcframework */; };
 		093EFE4124DB1E1400D7ED92 /* Clibsodium.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093EFE3E24DB1E1400D7ED92 /* Clibsodium.xcframework */; };
 		094298301EDDAA3B001236B1 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0942982F1EDDAA3B001236B1 /* Stream.swift */; };
@@ -89,6 +88,7 @@
 		90C75EEC1AE3583E00F1E749 /* Sodium.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D80541A4ECCD7000B83F9 /* Sodium.swift */; };
 		90C75EED1AE3583E00F1E749 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D805C1A4F4F72000B83F9 /* Utils.swift */; };
 		A0918C781E92489100C1DC33 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0918C771E92489100C1DC33 /* Auth.swift */; };
+		C7D8569725F1D20700C1E980 /* Clibsodium in Frameworks */ = {isa = PBXBuildFile; productRef = C7D8569625F1D20700C1E980 /* Clibsodium */; };
 		CFD847281BA8120900B1260F /* PWHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097F20D91AF127480088C2FE /* PWHash.swift */; };
 		D2A274061F13AD9300958702 /* KeyDerivation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A274051F13AD9300958702 /* KeyDerivation.swift */; };
 		D85101041E22EF5B003DB2E8 /* ReadmeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85101031E22EF5B003DB2E8 /* ReadmeTests.swift */; };
@@ -395,7 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				093EFE3F24DB1E1400D7ED92 /* Clibsodium.xcframework in Frameworks */,
+				C7D8569725F1D20700C1E980 /* Clibsodium in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +798,9 @@
 			dependencies = (
 			);
 			name = Sodium_iOS;
+			packageProductDependencies = (
+				C7D8569625F1D20700C1E980 /* Clibsodium */,
+			);
 			productName = Sodium;
 			productReference = 09A943C71A4EB5F500C8A04F /* Sodium.framework */;
 			productType = "com.apple.product-type.framework";
@@ -1033,6 +1036,9 @@
 				Base,
 			);
 			mainGroup = 09A943BD1A4EB5F500C8A04F;
+			packageReferences = (
+				C7D8569525F1D20700C1E980 /* XCRemoteSwiftPackageReference "clibsodium-xcframework" */,
+			);
 			productRefGroup = 09A943C81A4EB5F500C8A04F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1506,6 +1512,7 @@
 		09A943DE1A4EB5F500C8A04F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1530,7 +1537,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.pureftpd.swiftodium.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Sodium;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Sodium $(PROJECT_DIR)/Sodium/libsodium";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1541,6 +1548,7 @@
 		09A943DF1A4EB5F500C8A04F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1565,7 +1573,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.pureftpd.swiftodium.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Sodium;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/Sodium $(PROJECT_DIR)/Sodium/libsodium";
 				SWIFT_VERSION = 5.0;
@@ -2220,6 +2228,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C7D8569525F1D20700C1E980 /* XCRemoteSwiftPackageReference "clibsodium-xcframework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/junelife/clibsodium-xcframework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C7D8569625F1D20700C1E980 /* Clibsodium */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7D8569525F1D20700C1E980 /* XCRemoteSwiftPackageReference "clibsodium-xcframework" */;
+			productName = Clibsodium;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09A943BE1A4EB5F500C8A04F /* Project object */;
 }
