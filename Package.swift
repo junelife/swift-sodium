@@ -9,7 +9,7 @@ let package = Package(
             targets: ["Sodium"]),
     ],
     dependencies: [
-        .package(name: "Clibsodium", url: "https://github.com/junelife/clibsodium-xcframework", Package.Dependency.Requirement.branch("adarsh/spm-test")),
+        .package(name: "Clibsodium", url: "https://github.com/junelife/clibsodium-xcframework", from: "0.9.2"),
     ],
     targets: [
         .target(
