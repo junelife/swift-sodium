@@ -1,5 +1,5 @@
 import Foundation
-@_implementationOnly import Clibsodium
+import Clibsodium
 
 public struct Aead {
     public let xchacha20poly1305ietf = XChaCha20Poly1305Ietf()
